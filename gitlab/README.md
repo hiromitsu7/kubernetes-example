@@ -1,5 +1,18 @@
 # GitLab
 
+## 事前準備
+
+- hostsに`web.gitlab.local`と`runner.gitlab.local`を127.0.0.1に解決するように設定しておく
+
+## コンテナの起動
+
+```bash
+docker-compose up -d
+docker exec it gitlab_runner_1 bash
+apt-get update
+apt-get install -y maven
+```
+
 ## Runnerの登録
 
 うまく登録できない場合は、トークンをリセットすると成功することがある。
@@ -8,7 +21,7 @@
 docker exec -it gitlab_runner_1 bash
 # runnerコンテナ内で実行する
 gitlab-runner register
-# GitLab instance URLは http://web/ とする
+# GitLab instance URLは http://web.gitlab.local/ とする
 # tokenは GitLabのUIで確認した値とする
 # executorは shell とする
 ```
